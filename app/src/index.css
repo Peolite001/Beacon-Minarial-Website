@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 14% 4%;
+    --foreground: 43 23% 94%;
+    --card: 220 14% 4%;
+    --card-foreground: 43 23% 94%;
+    --popover: 220 14% 4%;
+    --popover-foreground: 43 23% 94%;
+    --primary: 43 45% 57%;
+    --primary-foreground: 220 14% 4%;
+    --secondary: 216 14% 9%;
+    --secondary-foreground: 43 23% 94%;
+    --muted: 216 14% 9%;
+    --muted-foreground: 214 10% 68%;
+    --accent: 43 45% 57%;
+    --accent-foreground: 220 14% 4%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 43 23% 94% / 0.18;
+    --input: 216 14% 15%;
+    --ring: 43 45% 57%;
+    --radius: 0;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Typography */
+.font-display {
+  font-family: 'Sora', sans-serif;
+}
+
+.font-mono {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Headline styles */
+.headline-hero {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  font-size: clamp(44px, 5.2vw, 84px);
+}
+
+.headline-section {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  font-size: clamp(34px, 3.6vw, 64px);
+}
+
+/* Micro label */
+.micro-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+/* Body text */
+.body-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  font-size: clamp(15px, 1.1vw, 18px);
+}
+
+/* Gold accent line */
+.gold-line {
+  height: 2px;
+  background-color: #C9A45C;
+  transform-origin: left center;
+}
+
+/* Vignette overlay */
+.vignette {
+  background: radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(11, 12, 14, 0.6) 100%);
+}
+
+/* Dark scrim */
+.scrim {
+  background: linear-gradient(to bottom, rgba(11, 12, 14, 0.3) 0%, rgba(11, 12, 14, 0.5) 50%, rgba(11, 12, 14, 0.7) 100%);
+}
+
+/* Noise texture */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Button styles */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-6 py-3 border border-[#C9A45C] text-[#F3F1EA] font-medium text-sm tracking-wide transition-transform duration-200;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-6 py-3 border border-[rgba(243,241,234,0.3)] text-[#F3F1EA] font-medium text-sm tracking-wide transition-all duration-200;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  border-color: #C9A45C;
+}
+
+/* Card hover */
+.card-hover {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+}
+
+/* Section pinned */
+.section-pinned {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Background image */
+.bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0C0E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2d33;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3d43;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid rgba(201, 164, 92, 0.6);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(201, 164, 92, 0.3);
+  color: #F3F1EA;
+}
